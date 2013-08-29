@@ -1,7 +1,12 @@
-require 'simplecov'
-SimpleCov.start
 
 require 'rspec'
+require 'simplecov'
+
+SimpleCov.start do
+  add_filter "/lib/tasks/"
+  add_filter "/spec/"
+end
+
 require 'm26'
 
 RSpec.configure do | config |

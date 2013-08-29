@@ -7,12 +7,8 @@ Copyright (C) 2013 Chris Joakim, JoakimSoftware LLC
 class Float
 
   def approximate?(val, tolerance=0.0001)
-    if val != nil
-      return false  if (self) > val + tolerance
-      return false  if (self) < val - tolerance
-    else
-      return false
-    end
+    return false if (self) > (val + tolerance)
+    return false if (self) < (val - tolerance)
     true
   end
 

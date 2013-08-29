@@ -16,9 +16,6 @@ module M26
 
     def initialize(raw_val)
       @hh, @mm, @ss = 0, 0, 0.0;
-      if (raw_val.nil?)
-        return
-      end
       if (raw_val.kind_of? String)
         initialize_string(raw_val)
       else
@@ -31,7 +28,7 @@ module M26
     end
 
     def as_hhmmss
-      return "#{zero_pad(@hh)}:#{zero_pad(@mm)}:#{zero_pad(@ss.round)}"
+      return "#{zero_pad(@hh)}:#{zero_pad(@mm)}:#{zero_pad(@ss)}"
     end
 
     def subtract(another_instance)
@@ -56,13 +53,13 @@ module M26
       if (array.length == 3)
         @hh = array[0].to_i
         @mm = array[1].to_i
-        @ss = array[2].to_f.round
+        @ss = array[2].to_f
         @ss = 59 if @ss > 59
       end
 
       if (array.length == 2)
         @mm = array[0].to_i
-        @ss = array[1].to_f.round
+        @ss = array[1].to_f
         @ss = 59 if @ss > 59
       end
 
@@ -70,7 +67,7 @@ module M26
         @ss = array[0].to_f.round
       end
 
-      @secs = (@hh.to_i * SECONDS_PER_HOUR) + (@mm.to_i * 60) + (@ss.to_i);
+      @secs = (@hh.to_i * SECONDS_PER_HOUR) + (@mm.to_i * 60) + (@ss.to_f);
     end
 
     def initialize_number(raw_val)

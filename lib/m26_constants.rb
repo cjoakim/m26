@@ -9,13 +9,13 @@ module M26
   module Constants
 
     VERSION             = '0.0.1'
-    DATE                = '2013-08-28'
+    DATE                = '2013-08-29'
     AUTHOR              = 'Chris Joakim'
     EMAIL               = 'cjoakim@bellsouth.net'
 
-    UOM_MILES           = "m"
-    UOM_KILOMETERS      = "k"
-    UOM_YARDS           = "y"
+    UOM_MILES           = 'm'
+    UOM_KILOMETERS      = 'k'
+    UOM_YARDS           = 'y'
 
     KILOMETERS_PER_MILE = 1.61290322581
     YARDS_PER_MILE      = 1760.0

@@ -40,3 +40,8 @@ task :qif2delim do
   u = command_line_arg('u', 'm')
   # TODO
 end
+
+desc 'Display the Array of leap years'
+task :display_leap_years do
+  puts M26::Age.new('1958-10-07', '2013-08-29').leap_years.inspect
+end

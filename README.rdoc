@@ -1,0 +1,70 @@
+== M26
+
+version 0.1.0, released 8-29-2013
+
+A ruby gem for running, cycling, and swimming calculations -
+pace, mph, projected times, UOM conversions, etc.
+
+The name refers to mile 26, the approximate length of a marathon.
+
+== Install
+
+  gem install m26
+
+== Synopsis
+
+  # Units of Measure for Distances
+    miles = 'm', kilometers = 'k', yards = 'y'
+
+  # Distances
+    d = M26::Distance.new(6.20)  # same as the following; defaults to miles
+    d = M26::Distance.new(6.20, 'm')
+    d = M26::Distance.new(10.0, 'k')
+    d = M26::Distance.new(1800, 'y')
+
+  # Elapsed Times
+    et = M26::ElapsedTime.new('3:58:33')  # works for average marathoners
+    et.as_hours -> 3.9758                 # translates to a Float
+
+    et = M26::ElapsedTime.new('0:9.58')   # works for Usain Bolt, too
+    et.as_hhmmss -> "00:00:09.58"         # reformats to a normalized String value
+
+  # Speed
+    d  = M26::Distance.new(26.20)
+    et = M26::ElapsedTime.new('3:58:33')
+    s  = M26::Speed.new(d, et)
+    s.get_mph -> 6.5898                   # miles per hour
+    s.get_kph -> 10.6287                  # kilometers per hour
+    s.get_yph -> 11598.071                # yards per hour
+
+    s = M26::Speed.from_pace_per_mile('06:00') # alternatively create from a pace
+
+  # Projecting a Speed, with simple extrapolation/interpolation
+    d1 = M26::Distance.new(26.2)
+    d2 = M26::Distance.new(20.0)
+    t  = M26::ElapsedTime.new('03:47:30')
+    s  = M26::Speed.new(d1, t)
+    s.projected_time(d2) -> '02:53:39'
+
+  # Projecting a Speed, with pete riegel exponential formula
+    d1 = M26::Distance.new(26.2)
+    d2 = M26::Distance.new(20.0)
+    t  = M26::ElapsedTime.new('03:47:30')
+    s  = M26::Speed.new(d1, t)
+    s.projected_time(d2, 'riegel') -> '02:50:52'
+
+  # Averaging two Speeds, such as for Run-Walk calculations
+    s1  = M26::Speed.from_pace_per_mile('06:00')
+    t1  = M26::ElapsedTime.new('00:04:00')
+    s2  = M26::Speed.from_pace_per_mile('18:00')
+    t2  = M26::ElapsedTime.new('00:04:00')
+    avg = M26::Speed.calculate_average_speed(s1, s2, t1, t2)
+    avg.get_mph -> 5.0
+    avg.pace_per_mile -> '12:00.0'
+
+== Copyright and License
+
+Copyright 2013, Chris Joakim, JoakimSoftware LLC, <cjoakim@bellsouth.net>.
+
+GNU General Public License (GPLv3) license.
+See http://www.gnu.org/copyleft/gpl.html

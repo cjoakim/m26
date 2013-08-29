@@ -20,11 +20,23 @@ module M26
     end
 
     def self.from_pace_per_mile(ppm)
-      dist   = Joakim::M26::Distance.new(1.0)
+      dist   = M26::Distance.new(1.0)
       tokens = ppm.split(':')
       secs   = ((tokens[0].to_i * 60) + tokens[1].to_i).to_f
-      et     = Joakim::M26::ElapsedTime.new(secs)
-      Joakim::M26::Speed.new(dist, et)
+      et     = M26::ElapsedTime.new(secs)
+      M26::Speed.new(dist, et)
+    end
+
+    def self.calculate_average_speed(s1, s2, t1, t2)
+      speed1, speed2, etime1, etime2 = s1, s2, t1, t2
+      total_time = (etime1.secs + etime2.secs).to_f
+      speed1_pct = ((etime1.secs).to_f) / total_time.to_f
+      speed2_pct = ((etime2.secs).to_f) / total_time.to_f
+      spm1  = ((speed1.seconds_per_mile).to_f) * speed1_pct
+      spm2  = ((speed2.seconds_per_mile).to_f) * speed2_pct
+      spm   = spm1 + spm2
+      tpm   = M26::ElapsedTime.new(spm)
+      M26::Speed.new(Distance.new(1.0), tpm)
     end
 
     public
@@ -77,43 +89,39 @@ module M26
     end
 
     def projected_times(space_delim_distances)
-      hash  = Hash.new();
+      results = {}
       array = space_delim_distances.split(' ');
       array.each { |d|
         another_distance = Distance.new(d.to_f, "m");
         projSecs = seconds_per_mile() * another_distance.get_miles();
         et = ElapsedTime.new(projSecs);
-        hash["#{d}"] = et.as_hhmmss;
+        results["#{d}"] = et.as_hhmmss;
       }
-      return hash;
+      return results;
     end
 
     def to_s
       return "Speed: miles=#{@distance.get_miles} seconds=#{@elapsed_time.secs} mph=#{get_mph()} kph=#{get_kph()} yph=#{get_yph()}"
     end
 
-    def age_graded(event_yyyy_mm_dd, base_yyyy_mm_dd=nil)
-      @evt_age = Joakim::Age.new event_yyyy_mm_dd
-      if base_yyyy_mm_dd.nil?
-        @base_age = Joakim::Age.new
-      else
-        @base_age = Joakim::Age.new base_yyyy_mm_dd
-      end
+    def age_graded(dob, event_yyyy_mm_dd, base_yyyy_mm_dd)
+      @evt_age   = M26::Age.new(dob, event_yyyy_mm_dd)
+      @base_age  = M26::Age.new(dob, base_yyyy_mm_dd)
       @ag_factor = (base_age.max_pulse / evt_age.max_pulse).to_f
       @ag_secs   = (elapsed_time.secs.to_f) * ag_factor
-      @ag_time   = Joakim::M26::ElapsedTime.new(ag_secs)
-      @ag_speed  = Joakim::M26::Speed.new(distance, ag_time)
-      if false
-        puts "evt age:   #{evt_age.to_s}  #{evt_age.date}"
-        puts "base age:  #{base_age.to_s} #{base_age.date}"
-        puts "ag_factor: #{ag_factor}"
-        puts "ag_secs:   #{ag_secs}"
-        puts "ag_speed:  #{ag_speed.to_s}"
-        puts "base pace: #{pace_per_mile}"
-        puts "base time: #{elapsed_time.as_hhmmss}"
-        puts "ag   pace: #{ag_speed.pace_per_mile}"
-        puts "ag   time: #{ag_speed.elapsed_time.as_hhmmss}"
-      end
+      @ag_time   = M26::ElapsedTime.new(ag_secs)
+      @ag_speed  = M26::Speed.new(distance, ag_time)
+      # if false
+      #   puts "evt age:   #{evt_age.to_s}  #{evt_age.date}"
+      #   puts "base age:  #{base_age.to_s} #{base_age.date}"
+      #   puts "ag_factor: #{ag_factor}"
+      #   puts "ag_secs:   #{ag_secs}"
+      #   puts "ag_speed:  #{ag_speed.to_s}"
+      #   puts "base pace: #{pace_per_mile}"
+      #   puts "base time: #{elapsed_time.as_hhmmss}"
+      #   puts "ag   pace: #{ag_speed.pace_per_mile}"
+      #   puts "ag   time: #{ag_speed.elapsed_time.as_hhmmss}"
+      # end
       @ag_speed
     end
 

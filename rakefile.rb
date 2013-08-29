@@ -9,13 +9,13 @@ require 'rake'
 require 'rbconfig'
 require 'rdoc/task'
 require 'rspec/core/rake_task'
-
-require 'simplecov'
-SimpleCov.start
+require 'fileutils'
 
 $: << "."
 $:.unshift File.join(File.dirname(__FILE__), "", "lib")
 Dir[File.join(File.dirname(__FILE__),'lib/tasks/*.rake')].each { | file | load file }
+
+require 'm26'
 
 desc "Default Task; rake spec"
 task :default => [ 'spec'.to_sym ]
