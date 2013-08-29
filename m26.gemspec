@@ -10,7 +10,7 @@ Gem::Specification.new do | s |
   s.description = 'A ruby gem for running, cycling, and swimming calculations.'
   s.authors     = [ M26::Constants::AUTHOR ]
   s.email       = M26::Constants::EMAIL
-  s.homepage    = 'http://rubygems.org/gems/m26'
+  s.homepage    = 'https://github.com/cjoakim/m26'
   s.platform    = Gem::Platform::RUBY
   s.required_ruby_version = '>= 2.0.0'
   s.has_rdoc    = true
