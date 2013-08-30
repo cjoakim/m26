@@ -8,8 +8,8 @@ module M26
 
   module Constants
 
-    VERSION             = '0.1.0'
-    DATE                = '2013-08-29'
+    VERSION             = '0.2.0'
+    DATE                = '2013-08-30'
     AUTHOR              = 'Chris Joakim'
     EMAIL               = 'cjoakim@bellsouth.net'
 

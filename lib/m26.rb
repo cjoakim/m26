@@ -4,8 +4,6 @@ Copyright (C) 2013 Chris Joakim, JoakimSoftware LLC
 
 =end
 
-puts "loading m26"
-
 require 'rubygems'
 
 require 'm26_ruby_extensions'
