@@ -36,7 +36,7 @@ The name refers to mile 26, the approximate length of a marathon.
     s.get_mph -> 6.5898                   # miles per hour
     s.get_kph -> 10.6287                  # kilometers per hour
     s.get_yph -> 11598.071                # yards per hour
-    s.pace_per_mile.should -> '9:06.29'
+    s.pace_per_mile -> '9:06.29'
 
     s = M26::Speed.from_pace_per_mile('06:00') # alternatively create from a pace per mile
 
