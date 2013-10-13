@@ -1,6 +1,6 @@
 == M26
 
-version 0.1.0, released 8-29-2013
+version 0.3.0, released 2013-10-13
 
 A ruby gem for running, cycling, and swimming calculations -
 pace, mph, projected times, UOM conversions, etc.
@@ -63,20 +63,12 @@ The name refers to mile 26, the approximate length of a marathon.
     avg.get_mph -> 5.0
     avg.pace_per_mile -> '12:00.0'
 
+  # Age-grading a time to another age
+    et = M26::ElapsedTime.new('04:08:19')
+    ag = M26::AgeGrade.new(56, 41)
+    ag.predict(et) -> '03:47:30'
+
 == TODO
-
-Add "Age-graded time" functionality
-
-- Add class "AgeGrade"
-  - constructor with two Age objects
-  - with 'predict' method, passing the name of the formula (default to 'maxpulse')
-
-- Refactor class Age as necessary
-  - max_pulse method??
-
-- Update specs, ensure 100% coverage.
-
-- Note: this enhancement ports similar logic from my RunToolz iOS app.
 
 
 == Copyright and License
