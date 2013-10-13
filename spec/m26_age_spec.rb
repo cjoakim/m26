@@ -87,6 +87,10 @@ describe "Test class M26::Age" do
     youngster.max_pulse.should be_within(0.1).of(200.0)
   end
 
+  it "should implement method 'to_f'" do
+    @age1.to_f.should be_within(0.01).of(54.89315068)
+  end
+
   it "should implement 'to_s'" do
     expected = 'Age - dob: 1958-10-07 as_of: 2013-08-29 days: 20050/1 whole: 54 float: 54.893150684931506 mp: 165.1068493150685'
     @age1.to_s.should == expected

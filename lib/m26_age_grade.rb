@@ -24,8 +24,6 @@ module M26
       end
     end
 
-    private
-
     def predict_maxpulse(elapsed_time)
       p1, p2 = maxpulse1.to_f, maxpulse2.to_f
       ratio  = p1 / p2
