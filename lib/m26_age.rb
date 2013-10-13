@@ -15,6 +15,7 @@ module M26
       @@leap_years
     end
 
+    # TODO - move these two methods down
     def leap_years
       @@leap_years
     end
@@ -77,6 +78,10 @@ module M26
 
     def dob_mm_dd
       "#{dob.month}-#{dob.mday}"
+    end
+
+    def to_f
+      float_years # TODO - test
     end
 
     def max_pulse

@@ -63,6 +63,22 @@ The name refers to mile 26, the approximate length of a marathon.
     avg.get_mph -> 5.0
     avg.pace_per_mile -> '12:00.0'
 
+== TODO
+
+Add "Age-graded time" functionality
+
+- Add class "AgeGrade"
+  - constructor with two Age objects
+  - with 'predict' method, passing the name of the formula (default to 'maxpulse')
+
+- Refactor class Age as necessary
+  - max_pulse method??
+
+- Update specs, ensure 100% coverage.
+
+- Note: this enhancement ports similar logic from my RunToolz iOS app.
+
+
 == Copyright and License
 
 Copyright 2013, Chris Joakim, JoakimSoftware LLC, <cjoakim@bellsouth.net>.

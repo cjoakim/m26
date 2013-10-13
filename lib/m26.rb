@@ -8,6 +8,7 @@ require 'rubygems'
 
 require 'm26_ruby_extensions'
 require 'm26_age'
+require 'm26_age_grade'
 require 'm26_constants'
 require 'm26_distance'
 require 'm26_elapsed_time'
