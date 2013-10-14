@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>m26</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body>
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Float.html">Float</a>
+  
+    <li><a href="./M26.html">M26</a>
+  
+    <li><a href="./M26/Age.html">M26::Age</a>
+  
+    <li><a href="./M26/AgeGrade.html">M26::AgeGrade</a>
+  
+    <li><a href="./M26/Constants.html">M26::Constants</a>
+  
+    <li><a href="./M26/Distance.html">M26::Distance</a>
+  
+    <li><a href="./M26/ElapsedTime.html">M26::ElapsedTime</a>
+  
+    <li><a href="./M26/Speed.html">M26::Speed</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+
+<h2 id="label-M26"><a href="M26.html">M26</a><span><a href="#label-M26">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>version 0.3.0, released 2013-10-13</p>
+
+<p>A ruby gem for running, cycling, and swimming calculations - pace, mph,
+projected times, UOM conversions, etc.</p>
+
+<p>The name refers to mile 26, the approximate length of a marathon.</p>
+
+<h2 id="label-Install">Install<span><a href="#label-Install">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<pre>gem install m26</pre>
+
+<h2 id="label-Synopsis">Synopsis<span><a href="#label-Synopsis">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<pre># Units of Measure for Distances
+  miles = &#39;m&#39;, kilometers = &#39;k&#39;, yards = &#39;y&#39;
+
+# Distances
+  d = M26::Distance.new(6.20)  # same as the following; defaults to miles
+  d = M26::Distance.new(6.20, &#39;m&#39;)
+  d = M26::Distance.new(10.0, &#39;k&#39;)
+  d = M26::Distance.new(1800, &#39;y&#39;)
+
+# Elapsed Times
+  et = M26::ElapsedTime.new(&#39;3:58:33&#39;)  # works for average marathoners
+  et.as_hours -&gt; 3.9758                 # translates to a Float
+
+  et = M26::ElapsedTime.new(&#39;0:9.58&#39;)   # works for Usain Bolt, too
+  et.as_hhmmss -&gt; &quot;00:00:09.58&quot;         # reformats to a normalized String value
+
+# Speed
+  d  = M26::Distance.new(26.20)
+  et = M26::ElapsedTime.new(&#39;3:58:33&#39;)
+  s  = M26::Speed.new(d, et)
+  s.get_mph -&gt; 6.5898                   # miles per hour
+  s.get_kph -&gt; 10.6287                  # kilometers per hour
+  s.get_yph -&gt; 11598.071                # yards per hour
+  s.pace_per_mile -&gt; &#39;9:06.29&#39;
+
+  s = M26::Speed.from_pace_per_mile(&#39;06:00&#39;) # alternatively create from a pace per mile
+
+# Projecting a Speed, with simple extrapolation/interpolation
+  d1 = M26::Distance.new(26.2)
+  d2 = M26::Distance.new(20.0)
+  t  = M26::ElapsedTime.new(&#39;03:47:30&#39;)
+  s  = M26::Speed.new(d1, t)
+  s.projected_time(d2) -&gt; &#39;02:53:39&#39;
+
+# Projecting a Speed, with pete riegel exponential formula
+  d1 = M26::Distance.new(26.2)
+  d2 = M26::Distance.new(20.0)
+  t  = M26::ElapsedTime.new(&#39;03:47:30&#39;)
+  s  = M26::Speed.new(d1, t)
+  s.projected_time(d2, &#39;riegel&#39;) -&gt; &#39;02:50:52&#39;
+
+# Averaging two Speeds, such as for Run-Walk calculations
+  s1  = M26::Speed.from_pace_per_mile(&#39;06:00&#39;)
+  t1  = M26::ElapsedTime.new(&#39;00:04:00&#39;)
+  s2  = M26::Speed.from_pace_per_mile(&#39;18:00&#39;)
+  t2  = M26::ElapsedTime.new(&#39;00:04:00&#39;)
+  avg = M26::Speed.calculate_average_speed(s1, s2, t1, t2)
+  avg.get_mph -&gt; 5.0
+  avg.pace_per_mile -&gt; &#39;12:00.0&#39;
+
+# Age-grading a time to another age
+  et = M26::ElapsedTime.new(&#39;04:08:19&#39;)
+  ag = M26::AgeGrade.new(56, 41)
+  ag.predict(et) -&gt; &#39;03:47:30&#39;</pre>
+
+<h2 id="label-TODO">TODO<span><a href="#label-TODO">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<h2 id="label-Copyright+and+License">Copyright and License<span><a href="#label-Copyright+and+License">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>Copyright 2013, Chris Joakim, JoakimSoftware LLC,
+&lt;cjoakim@bellsouth.net&gt;.</p>
+
+<p>GNU General Public License (GPLv3) license. See <a
+href="http://www.gnu.org/copyleft/gpl.html">www.gnu.org/copyleft/gpl.html</a></p>
+</div>
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

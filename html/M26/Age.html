@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class M26::Age - m26</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/m26_age.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-leap_years">::leap_years</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-dob_mm_dd">#dob_mm_dd</a>
+    
+    <li ><a href="#method-i-initialize_leap_years">#initialize_leap_years</a>
+    
+    <li ><a href="#method-i-leap_year-3F">#leap_year?</a>
+    
+    <li ><a href="#method-i-leap_years">#leap_years</a>
+    
+    <li ><a href="#method-i-max_pulse">#max_pulse</a>
+    
+    <li ><a href="#method-i-next_birthday">#next_birthday</a>
+    
+    <li ><a href="#method-i-prev_birthday">#prev_birthday</a>
+    
+    <li ><a href="#method-i-to_f">#to_f</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Float.html">Float</a>
+  
+    <li><a href="../M26.html">M26</a>
+  
+    <li><a href="../M26/Age.html">M26::Age</a>
+  
+    <li><a href="../M26/AgeGrade.html">M26::AgeGrade</a>
+  
+    <li><a href="../M26/Constants.html">M26::Constants</a>
+  
+    <li><a href="../M26/Distance.html">M26::Distance</a>
+  
+    <li><a href="../M26/ElapsedTime.html">M26::ElapsedTime</a>
+  
+    <li><a href="../M26/Speed.html">M26::Speed</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class M26::Age</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-as_of_date" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">as_of_date</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-days" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">days</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-dob" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">dob</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-float_years" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">float_years</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-whole_years" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">whole_years</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-yymm" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">yymm</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-leap_years" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">leap_years</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="leap_years-source">
+            <pre><span class="ruby-comment"># File lib/m26_age.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">leap_years</span>
+  <span class="ruby-identifier">@@leap_years</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- leap_years-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- leap_years-method -->
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(birth_yyyy_mm_dd, as_of_yyyy_mm_dd)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/m26_age.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">birth_yyyy_mm_dd</span>, <span class="ruby-identifier">as_of_yyyy_mm_dd</span>)
+  <span class="ruby-identifier">initialize_leap_years</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@leap_years</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@dob</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">birth_yyyy_mm_dd</span>)
+  <span class="ruby-ivar">@as_of_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">as_of_yyyy_mm_dd</span>)
+  <span class="ruby-ivar">@days</span> = <span class="ruby-identifier">as_of_date</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">dob</span>
+  <span class="ruby-ivar">@yymm</span> = (<span class="ruby-identifier">dob</span>.<span class="ruby-identifier">mon</span> <span class="ruby-operator">*</span> <span class="ruby-value">100</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">dob</span>.<span class="ruby-identifier">day</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">relation_to_birthday</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@whole_years</span> = <span class="ruby-identifier">as_of_date</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">dob</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@whole_years</span> = <span class="ruby-identifier">as_of_date</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">dob</span>.<span class="ruby-identifier">year</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">pbd</span>, <span class="ruby-identifier">nbd</span> = <span class="ruby-identifier">prev_birthday</span>, <span class="ruby-identifier">next_birthday</span>
+  <span class="ruby-identifier">ndays</span> = (<span class="ruby-identifier">leap_year?</span>(<span class="ruby-identifier">nbd</span>.<span class="ruby-identifier">year</span>) <span class="ruby-operator">?</span> <span class="ruby-value">366</span> <span class="ruby-operator">:</span> <span class="ruby-value">365</span>)
+  <span class="ruby-identifier">days_diff</span> = <span class="ruby-identifier">as_of_date</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">pbd</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">relation_to_birthday</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@float_years</span> = <span class="ruby-ivar">@whole_years</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@float_years</span> = <span class="ruby-ivar">@whole_years</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">days_diff</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">ndays</span>.<span class="ruby-identifier">to_f</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-dob_mm_dd" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dob_mm_dd</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="dob_mm_dd-source">
+            <pre><span class="ruby-comment"># File lib/m26_age.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dob_mm_dd</span>
+  <span class="ruby-node">&quot;#{dob.month}-#{dob.mday}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- dob_mm_dd-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- dob_mm_dd-method -->
+
+    
+      <div id="method-i-initialize_leap_years" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">initialize_leap_years</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="initialize_leap_years-source">
+            <pre><span class="ruby-comment"># File lib/m26_age.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize_leap_years</span>
+  (<span class="ruby-value">1900</span><span class="ruby-operator">..</span><span class="ruby-value">2100</span>).<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">|</span>
+    <span class="ruby-identifier">d</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-node">&quot;#{y}-01-01&quot;</span>)
+    <span class="ruby-identifier">@@leap_years</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">y</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">leap?</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- initialize_leap_years-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- initialize_leap_years-method -->
+
+    
+      <div id="method-i-leap_year-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">leap_year?</span><span
+            class="method-args">(y)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="leap_year-3F-source">
+            <pre><span class="ruby-comment"># File lib/m26_age.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">leap_year?</span>(<span class="ruby-identifier">y</span>)
+  <span class="ruby-identifier">@@leap_years</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">y</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- leap_year-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- leap_year-3F-method -->
+
+    
+      <div id="method-i-leap_years" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">leap_years</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>TODO - move these two methods down</p>
+          
+          
+
+          
+          <div class="method-source-code" id="leap_years-source">
+            <pre><span class="ruby-comment"># File lib/m26_age.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">leap_years</span>
+  <span class="ruby-identifier">@@leap_years</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- leap_years-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- leap_years-method -->
+
+    
+      <div id="method-i-max_pulse" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">max_pulse</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="max_pulse-source">
+            <pre><span class="ruby-comment"># File lib/m26_age.rb, line 87</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">max_pulse</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">float_years</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">20</span>
+    <span class="ruby-value">200.0</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-value">220.0</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">float_years</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- max_pulse-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- max_pulse-method -->
+
+    
+      <div id="method-i-next_birthday" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">next_birthday</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="next_birthday-source">
+            <pre><span class="ruby-comment"># File lib/m26_age.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">next_birthday</span>
+  <span class="ruby-identifier">bb</span> = <span class="ruby-identifier">relation_to_birthday</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">bb</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>
+    <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-node">&quot;#{as_of_date.year + 1}-#{dob_mm_dd}&quot;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-node">&quot;#{as_of_date.year}-#{dob_mm_dd}&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- next_birthday-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- next_birthday-method -->
+
+    
+      <div id="method-i-prev_birthday" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">prev_birthday</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="prev_birthday-source">
+            <pre><span class="ruby-comment"># File lib/m26_age.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">prev_birthday</span>
+  <span class="ruby-identifier">bb</span> = <span class="ruby-identifier">relation_to_birthday</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">bb</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+    <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-node">&quot;#{as_of_date.year}-#{dob_mm_dd}&quot;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-node">&quot;#{as_of_date.year - 1}-#{dob_mm_dd}&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- prev_birthday-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- prev_birthday-method -->
+
+    
+      <div id="method-i-to_f" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_f</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_f-source">
+            <pre><span class="ruby-comment"># File lib/m26_age.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">float_years</span> <span class="ruby-comment"># TODO - test</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_f-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_f-method -->
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File lib/m26_age.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+  <span class="ruby-node">&quot;Age - dob: #{dob} as_of: #{as_of_date } days: #{days} whole: #{whole_years} float: #{float_years} mp: #{max_pulse}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_s-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_s-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

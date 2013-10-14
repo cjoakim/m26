@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class M26::Speed - m26</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/m26_speed.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="Constants.html">M26::Constants</a>
+  
+  
+  </ul>
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-calculate_average_speed">::calculate_average_speed</a>
+    
+    <li ><a href="#method-c-from_pace_per_mile">::from_pace_per_mile</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-age_graded">#age_graded</a>
+    
+    <li ><a href="#method-i-get_kph">#get_kph</a>
+    
+    <li ><a href="#method-i-get_mph">#get_mph</a>
+    
+    <li ><a href="#method-i-get_yph">#get_yph</a>
+    
+    <li ><a href="#method-i-pace_per_mile">#pace_per_mile</a>
+    
+    <li ><a href="#method-i-projected_time">#projected_time</a>
+    
+    <li ><a href="#method-i-projected_times">#projected_times</a>
+    
+    <li ><a href="#method-i-seconds_per_mile">#seconds_per_mile</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Float.html">Float</a>
+  
+    <li><a href="../M26.html">M26</a>
+  
+    <li><a href="../M26/Age.html">M26::Age</a>
+  
+    <li><a href="../M26/AgeGrade.html">M26::AgeGrade</a>
+  
+    <li><a href="../M26/Constants.html">M26::Constants</a>
+  
+    <li><a href="../M26/Distance.html">M26::Distance</a>
+  
+    <li><a href="../M26/ElapsedTime.html">M26::ElapsedTime</a>
+  
+    <li><a href="../M26/Speed.html">M26::Speed</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class M26::Speed</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-ag_factor" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">ag_factor</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-ag_secs" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">ag_secs</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-ag_speed" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">ag_speed</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-ag_time" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">ag_time</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-base_age" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">base_age</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-distance" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">distance</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-elapsed_time" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">elapsed_time</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-evt_age" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">evt_age</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-calculate_average_speed" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">calculate_average_speed</span><span
+            class="method-args">(s1, s2, t1, t2)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="calculate_average_speed-source">
+            <pre><span class="ruby-comment"># File lib/m26_speed.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">calculate_average_speed</span>(<span class="ruby-identifier">s1</span>, <span class="ruby-identifier">s2</span>, <span class="ruby-identifier">t1</span>, <span class="ruby-identifier">t2</span>)
+  <span class="ruby-identifier">speed1</span>, <span class="ruby-identifier">speed2</span>, <span class="ruby-identifier">etime1</span>, <span class="ruby-identifier">etime2</span> = <span class="ruby-identifier">s1</span>, <span class="ruby-identifier">s2</span>, <span class="ruby-identifier">t1</span>, <span class="ruby-identifier">t2</span>
+  <span class="ruby-identifier">total_time</span> = (<span class="ruby-identifier">etime1</span>.<span class="ruby-identifier">secs</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">etime2</span>.<span class="ruby-identifier">secs</span>).<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">speed1_pct</span> = ((<span class="ruby-identifier">etime1</span>.<span class="ruby-identifier">secs</span>).<span class="ruby-identifier">to_f</span>) <span class="ruby-operator">/</span> <span class="ruby-identifier">total_time</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">speed2_pct</span> = ((<span class="ruby-identifier">etime2</span>.<span class="ruby-identifier">secs</span>).<span class="ruby-identifier">to_f</span>) <span class="ruby-operator">/</span> <span class="ruby-identifier">total_time</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">spm1</span>  = ((<span class="ruby-identifier">speed1</span>.<span class="ruby-identifier">seconds_per_mile</span>).<span class="ruby-identifier">to_f</span>) <span class="ruby-operator">*</span> <span class="ruby-identifier">speed1_pct</span>
+  <span class="ruby-identifier">spm2</span>  = ((<span class="ruby-identifier">speed2</span>.<span class="ruby-identifier">seconds_per_mile</span>).<span class="ruby-identifier">to_f</span>) <span class="ruby-operator">*</span> <span class="ruby-identifier">speed2_pct</span>
+  <span class="ruby-identifier">spm</span>   = <span class="ruby-identifier">spm1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">spm2</span>
+  <span class="ruby-identifier">tpm</span>   = <span class="ruby-constant">M26</span><span class="ruby-operator">::</span><span class="ruby-constant">ElapsedTime</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">spm</span>)
+  <span class="ruby-constant">M26</span><span class="ruby-operator">::</span><span class="ruby-constant">Speed</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Distance</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1.0</span>), <span class="ruby-identifier">tpm</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- calculate_average_speed-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- calculate_average_speed-method -->
+
+    
+      <div id="method-c-from_pace_per_mile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">from_pace_per_mile</span><span
+            class="method-args">(ppm)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="from_pace_per_mile-source">
+            <pre><span class="ruby-comment"># File lib/m26_speed.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">from_pace_per_mile</span>(<span class="ruby-identifier">ppm</span>)
+  <span class="ruby-identifier">dist</span>   = <span class="ruby-constant">M26</span><span class="ruby-operator">::</span><span class="ruby-constant">Distance</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1.0</span>)
+  <span class="ruby-identifier">tokens</span> = <span class="ruby-identifier">ppm</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;:&#39;</span>)
+  <span class="ruby-identifier">secs</span>   = ((<span class="ruby-identifier">tokens</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">tokens</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>).<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">et</span>     = <span class="ruby-constant">M26</span><span class="ruby-operator">::</span><span class="ruby-constant">ElapsedTime</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">secs</span>)
+  <span class="ruby-constant">M26</span><span class="ruby-operator">::</span><span class="ruby-constant">Speed</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">dist</span>, <span class="ruby-identifier">et</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- from_pace_per_mile-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- from_pace_per_mile-method -->
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(dist, et)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/m26_speed.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">dist</span>, <span class="ruby-identifier">et</span>)
+  <span class="ruby-ivar">@distance</span>     = <span class="ruby-identifier">dist</span>
+  <span class="ruby-ivar">@elapsed_time</span> = <span class="ruby-identifier">et</span>
+  <span class="ruby-ivar">@mph</span>          = <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-age_graded" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">age_graded</span><span
+            class="method-args">(dob, event_yyyy_mm_dd, base_yyyy_mm_dd)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="age_graded-source">
+            <pre><span class="ruby-comment"># File lib/m26_speed.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">age_graded</span>(<span class="ruby-identifier">dob</span>, <span class="ruby-identifier">event_yyyy_mm_dd</span>, <span class="ruby-identifier">base_yyyy_mm_dd</span>)
+  <span class="ruby-ivar">@evt_age</span>   = <span class="ruby-constant">M26</span><span class="ruby-operator">::</span><span class="ruby-constant">Age</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">dob</span>, <span class="ruby-identifier">event_yyyy_mm_dd</span>)
+  <span class="ruby-ivar">@base_age</span>  = <span class="ruby-constant">M26</span><span class="ruby-operator">::</span><span class="ruby-constant">Age</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">dob</span>, <span class="ruby-identifier">base_yyyy_mm_dd</span>)
+  <span class="ruby-ivar">@ag_factor</span> = (<span class="ruby-identifier">base_age</span>.<span class="ruby-identifier">max_pulse</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">evt_age</span>.<span class="ruby-identifier">max_pulse</span>).<span class="ruby-identifier">to_f</span>
+  <span class="ruby-ivar">@ag_secs</span>   = (<span class="ruby-identifier">elapsed_time</span>.<span class="ruby-identifier">secs</span>.<span class="ruby-identifier">to_f</span>) <span class="ruby-operator">*</span> <span class="ruby-identifier">ag_factor</span>
+  <span class="ruby-ivar">@ag_time</span>   = <span class="ruby-constant">M26</span><span class="ruby-operator">::</span><span class="ruby-constant">ElapsedTime</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">ag_secs</span>)
+  <span class="ruby-ivar">@ag_speed</span>  = <span class="ruby-constant">M26</span><span class="ruby-operator">::</span><span class="ruby-constant">Speed</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">distance</span>, <span class="ruby-identifier">ag_time</span>)
+  <span class="ruby-comment"># if false</span>
+  <span class="ruby-comment">#   puts &quot;evt age:   #{evt_age.to_s}  #{evt_age.date}&quot;</span>
+  <span class="ruby-comment">#   puts &quot;base age:  #{base_age.to_s} #{base_age.date}&quot;</span>
+  <span class="ruby-comment">#   puts &quot;ag_factor: #{ag_factor}&quot;</span>
+  <span class="ruby-comment">#   puts &quot;ag_secs:   #{ag_secs}&quot;</span>
+  <span class="ruby-comment">#   puts &quot;ag_speed:  #{ag_speed.to_s}&quot;</span>
+  <span class="ruby-comment">#   puts &quot;base pace: #{pace_per_mile}&quot;</span>
+  <span class="ruby-comment">#   puts &quot;base time: #{elapsed_time.as_hhmmss}&quot;</span>
+  <span class="ruby-comment">#   puts &quot;ag   pace: #{ag_speed.pace_per_mile}&quot;</span>
+  <span class="ruby-comment">#   puts &quot;ag   time: #{ag_speed.elapsed_time.as_hhmmss}&quot;</span>
+  <span class="ruby-comment"># end</span>
+  <span class="ruby-ivar">@ag_speed</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- age_graded-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- age_graded-method -->
+
+    
+      <div id="method-i-get_kph" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_kph</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_kph-source">
+            <pre><span class="ruby-comment"># File lib/m26_speed.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_kph</span>
+  <span class="ruby-ivar">@distance</span>.<span class="ruby-identifier">get_kilometers</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@elapsed_time</span>.<span class="ruby-identifier">as_hours</span>();
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_kph-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_kph-method -->
+
+    
+      <div id="method-i-get_mph" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_mph</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_mph-source">
+            <pre><span class="ruby-comment"># File lib/m26_speed.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_mph</span>
+  <span class="ruby-identifier">num</span> = <span class="ruby-ivar">@distance</span>.<span class="ruby-identifier">get_miles</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">den</span> = <span class="ruby-ivar">@elapsed_time</span>.<span class="ruby-identifier">as_hours</span>
+  <span class="ruby-identifier">num</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">den</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_mph-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_mph-method -->
+
+    
+      <div id="method-i-get_yph" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_yph</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_yph-source">
+            <pre><span class="ruby-comment"># File lib/m26_speed.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_yph</span>
+  <span class="ruby-ivar">@distance</span>.<span class="ruby-identifier">get_yards</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@elapsed_time</span>.<span class="ruby-identifier">as_hours</span>();
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_yph-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_yph-method -->
+
+    
+      <div id="method-i-pace_per_mile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pace_per_mile</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="pace_per_mile-source">
+            <pre><span class="ruby-comment"># File lib/m26_speed.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pace_per_mile</span>
+  <span class="ruby-identifier">spm</span> = <span class="ruby-identifier">seconds_per_mile</span>()
+  <span class="ruby-identifier">mm</span>  = (<span class="ruby-identifier">spm</span> <span class="ruby-operator">/</span> <span class="ruby-value">60</span>).<span class="ruby-identifier">floor</span>;
+  <span class="ruby-identifier">ss</span>  = <span class="ruby-identifier">spm</span> <span class="ruby-operator">-</span> (<span class="ruby-identifier">mm</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>);
+
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">ss</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">10</span>)
+    <span class="ruby-identifier">ss</span> = <span class="ruby-string">&#39;0&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ss</span>.<span class="ruby-identifier">to_s</span>;
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">ss</span> = <span class="ruby-string">&#39;&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ss</span>.<span class="ruby-identifier">to_s</span>;
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">ss</span> = <span class="ruby-identifier">ss</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">4</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;#{mm}:#{ss}&quot;</span>;
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- pace_per_mile-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- pace_per_mile-method -->
+
+    
+      <div id="method-i-projected_time" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">projected_time</span><span
+            class="method-args">(another_distance, algorithm='simple', pow=1.06, debug=false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="projected_time-source">
+            <pre><span class="ruby-comment"># File lib/m26_speed.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">projected_time</span>(<span class="ruby-identifier">another_distance</span>, <span class="ruby-identifier">algorithm</span>=<span class="ruby-string">&#39;simple&#39;</span>, <span class="ruby-identifier">pow</span>=<span class="ruby-value">1.06</span>, <span class="ruby-identifier">debug</span>=<span class="ruby-keyword">false</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">algorithm</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;riegel&#39;</span>)
+    <span class="ruby-identifier">t1</span> = <span class="ruby-ivar">@elapsed_time</span>.<span class="ruby-identifier">secs</span>
+    <span class="ruby-identifier">d1</span> = <span class="ruby-ivar">@distance</span>.<span class="ruby-identifier">get_miles</span>
+    <span class="ruby-identifier">d2</span> = <span class="ruby-identifier">another_distance</span>.<span class="ruby-identifier">get_miles</span>
+    <span class="ruby-identifier">t2</span> = <span class="ruby-identifier">t1</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> ((<span class="ruby-identifier">d2</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">d1</span>.<span class="ruby-identifier">to_f</span>) <span class="ruby-operator">**</span> <span class="ruby-identifier">pow</span>)
+    <span class="ruby-identifier">et</span> = <span class="ruby-constant">ElapsedTime</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">t2</span>);
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">et</span>.<span class="ruby-identifier">as_hhmmss</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">projSecs</span> = <span class="ruby-identifier">seconds_per_mile</span>() <span class="ruby-operator">*</span> <span class="ruby-identifier">another_distance</span>.<span class="ruby-identifier">get_miles</span>();
+    <span class="ruby-identifier">et</span> = <span class="ruby-constant">ElapsedTime</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">projSecs</span>);
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">et</span>.<span class="ruby-identifier">as_hhmmss</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- projected_time-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- projected_time-method -->
+
+    
+      <div id="method-i-projected_times" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">projected_times</span><span
+            class="method-args">(space_delim_distances)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="projected_times-source">
+            <pre><span class="ruby-comment"># File lib/m26_speed.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">projected_times</span>(<span class="ruby-identifier">space_delim_distances</span>)
+  <span class="ruby-identifier">results</span> = {}
+  <span class="ruby-identifier">array</span> = <span class="ruby-identifier">space_delim_distances</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39; &#39;</span>);
+  <span class="ruby-identifier">array</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">another_distance</span> = <span class="ruby-constant">Distance</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_f</span>, <span class="ruby-string">&quot;m&quot;</span>);
+    <span class="ruby-identifier">projSecs</span> = <span class="ruby-identifier">seconds_per_mile</span>() <span class="ruby-operator">*</span> <span class="ruby-identifier">another_distance</span>.<span class="ruby-identifier">get_miles</span>();
+    <span class="ruby-identifier">et</span> = <span class="ruby-constant">ElapsedTime</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">projSecs</span>);
+    <span class="ruby-identifier">results</span>[<span class="ruby-node">&quot;#{d}&quot;</span>] = <span class="ruby-identifier">et</span>.<span class="ruby-identifier">as_hhmmss</span>;
+  }
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">results</span>;
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- projected_times-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- projected_times-method -->
+
+    
+      <div id="method-i-seconds_per_mile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">seconds_per_mile</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="seconds_per_mile-source">
+            <pre><span class="ruby-comment"># File lib/m26_speed.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">seconds_per_mile</span>
+  <span class="ruby-ivar">@elapsed_time</span>.<span class="ruby-identifier">secs</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@distance</span>.<span class="ruby-identifier">get_miles</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- seconds_per_mile-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- seconds_per_mile-method -->
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File lib/m26_speed.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;Speed: miles=#{@distance.get_miles} seconds=#{@elapsed_time.secs} mph=#{get_mph()} kph=#{get_kph()} yph=#{get_yph()}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_s-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_s-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
