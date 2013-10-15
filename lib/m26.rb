@@ -5,6 +5,7 @@ Copyright (C) 2013 Chris Joakim, JoakimSoftware LLC
 =end
 
 require 'rubygems'
+require 'date'
 
 require 'm26_ruby_extensions'
 require 'm26_age'

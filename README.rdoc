@@ -70,6 +70,10 @@ The name refers to mile 26, the approximate length of a marathon.
 
 == TODO
 
+- explore minitest
+  - run minitest-based tests with: "rake test"
+  - explore code-coverage with minitest
+
 
 == Copyright and License
 

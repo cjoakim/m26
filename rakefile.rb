@@ -20,6 +20,15 @@ require 'm26'
 desc "Default Task; rake spec"
 task :default => [ 'spec'.to_sym ]
 
+require 'rake/testtask'
+require 'minitest/autorun'
+
+Rake::TestTask.new do |t|
+  t.libs.push "lib"
+  t.test_files = FileList['test/*_test.rb']
+  t.verbose = true
+end
+
 Rake::RDocTask.new do | rd |
   rd.main  = "README.rdoc"
   rd.title = "m26"
