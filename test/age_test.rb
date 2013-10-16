@@ -1,5 +1,5 @@
-require 'minitest/autorun'
-require 'm26'
+require_relative "minitest_helper"
+require "minitest/autorun"
 
 # see http://www.rubyinside.com/a-minitestspec-tutorial-elegant-spec-style-testing-that-comes-with-ruby-5354.html
 
@@ -11,6 +11,7 @@ describe M26::Age do
     @age2 = M26::Age.new('1958-10-07', '2013-10-07')
     @age3 = M26::Age.new('1958-10-07', '2013-11-16')
     @age4 = M26::Age.new('1958-10-07', '2013-10-06')
+    puts "#{__FILE__} #{__LINE__} PID: #{Process.pid}"
   end
 
   it "should implement class method 'leap_years'" do

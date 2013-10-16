@@ -10,6 +10,7 @@ require 'rbconfig'
 require 'rdoc/task'
 require 'rspec/core/rake_task'
 require 'fileutils'
+require 'rake/testtask'
 
 $: << "."
 $:.unshift File.join(File.dirname(__FILE__), "", "lib")
@@ -20,19 +21,24 @@ require 'm26'
 desc "Default Task; rake spec"
 task :default => [ 'spec'.to_sym ]
 
-require 'rake/testtask'
-require 'minitest/autorun'
+Rake::RDocTask.new do | t |
+  t.main  = "README.rdoc"
+  t.title = "m26"
+  t.rdoc_files.include("README.rdoc", "lib/**/*.rb")
+end
 
-Rake::TestTask.new do |t|
+Rake::TestTask.new do | t |
   t.libs.push "lib"
   t.test_files = FileList['test/*_test.rb']
   t.verbose = true
 end
 
-Rake::RDocTask.new do | rd |
-  rd.main  = "README.rdoc"
-  rd.title = "m26"
-  rd.rdoc_files.include("README.rdoc", "lib/**/*.rb")
+namespace :test do
+  desc "Executes the 'test' task after deleting the previous coverage result files."
+  task :clean do
+    FileUtils.rm_r 'coverage', :force => true
+    Rake::Task["test"].execute
+  end
 end
 
 RSpec::Core::RakeTask.new('spec')

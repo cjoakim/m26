@@ -1,9 +1,9 @@
-Sun, 13 Oct 2013 17:05:01 -0400
-README.rdoc	Sun, 13 Oct 2013 17:04:19 -0400
-lib/m26.rb	Tue, 03 Sep 2013 05:45:28 -0400
+Wed, 16 Oct 2013 10:11:25 -0400
+README.rdoc	Tue, 15 Oct 2013 17:47:33 -0400
+lib/m26.rb	Tue, 15 Oct 2013 17:42:27 -0400
 lib/m26_age.rb	Tue, 03 Sep 2013 05:58:56 -0400
 lib/m26_age_grade.rb	Sun, 13 Oct 2013 17:04:19 -0400
-lib/m26_constants.rb	Sun, 13 Oct 2013 16:14:25 -0400
+lib/m26_constants.rb	Tue, 15 Oct 2013 17:06:05 -0400
 lib/m26_distance.rb	Wed, 28 Aug 2013 19:09:00 -0400
 lib/m26_elapsed_time.rb	Tue, 03 Sep 2013 09:21:53 -0400
 lib/m26_ruby_extensions.rb	Thu, 29 Aug 2013 11:18:32 -0400

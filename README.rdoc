@@ -68,11 +68,40 @@ The name refers to mile 26, the approximate length of a marathon.
     ag = M26::AgeGrade.new(56, 41)
     ag.predict(et) -> '03:47:30'
 
-== TODO
+== Exploring minitest, October 2013
 
-- explore minitest
-  - run minitest-based tests with: "rake test"
-  - explore code-coverage with minitest
+- links
+  - see http://www.rubyinside.com/a-minitestspec-tutorial-elegant-spec-style-testing-that-comes-with-ruby-5354.html
+  - see https://github.com/seattlerb/minitest
+  - see http://bfts.rubyforge.org/minitest/
+
+- executing the initial tests with minitest:
+  - rake test                # Run tests
+  - rake test:clean          # Executes the 'test' task after deleting the previous coverage result files
+
+- implementation notes
+  - successfully got minitest to work with simplecov!
+  - added 'minitest' to the Gemfile
+  - added file 'test/minitest_helper.rb', and required it in 'test/age_test.rb'
+  - added these two tasks to rakefile.rb
+
+      Rake::TestTask.new do | t |
+        t.libs.push "lib"
+        t.test_files = FileList['test/*_test.rb']
+        t.verbose = true
+      end
+
+      namespace :test do
+        desc "Executes the 'test' task after deleting the previous coverage result files."
+        task :clean do
+          FileUtils.rm_r 'coverage', :force => true
+          Rake::Task["test"].execute
+        end
+      end
+
+  - the 'rake test' and 'rake test:clean' tasks launch the tests in another process,
+    which is where SimpleCov is loaded and used (not in the rakefile main process).
+  - Added some process id logging; this can be removed.
 
 
 == Copyright and License
