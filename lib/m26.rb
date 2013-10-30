@@ -14,5 +14,6 @@ require 'm26_constants'
 require 'm26_distance'
 require 'm26_elapsed_time'
 require 'm26_speed'
+require 'm26_ultra'
 
-puts "m26 loaded in PID: #{Process.pid}"
+# puts "m26 loaded in PID: #{Process.pid}"
