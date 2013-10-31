@@ -8,47 +8,57 @@ module M26
 
   class Ultra
 
-    attr_accessor :run_time, :run_speed, :walk_time, :walk_speed, :stopped_time_per_hour
-    attr_accessor :distances, :stopped_time_pct, :moving_time_pct
-    attr_accessor :stopped_time_pct, :moving_time_pct
-    attr_accessor :total_moving_time, :run_time_pct, :walk_time_pct
+    attr_accessor :run_pace, :run_time
+    attr_accessor :walk_pace, :walk_time
+    attr_accessor :stopped_time_per_hour, :stopped_time_pct, :moving_time_pct
+    attr_accessor :moving_secs, :moving_run_pct, :moving_walk_pct
+    attr_accessor :run_secs, :walk_secs, :avg_rw_secs
+    attr_accessor :moving_speed, :overall_speed
 
-    attr_accessor :run_spm, :walk_spm
-
-    def initialize(rt, rs, wt, ws, sth, distances_str)
-      @run_time, @run_speed, @walk_time, @walk_speed, @stopped_time_per_hour = rt, rs, wt, ws, sth
-      @distances = distances_str.split(',')
+    def initialize(rp, rt, wp, wt, sth=nil, debug=false)
+      @run_pace, @run_time = rp, rt
+      @walk_pace, @walk_time = wp, wt
+      @stopped_time_per_hour = sth
+      @overall_mph = 0.0
 
       if stopped_time_per_hour
         @stopped_time_pct = stopped_time_per_hour.secs.to_f / M26::Constants::SECONDS_PER_HOUR.to_f
-        @moving_time_pct  = 100.0 - stopped_time_pct
+        @moving_time_pct  = 1.0 - stopped_time_pct
       else
         @stopped_time_pct = 0.0
-        @moving_time_pct  = 100.0
+        @moving_time_pct  = 1.0
       end
 
-      @total_moving_time = (run_time.secs.to_f + walk_time.secs.to_f).to_f
-      @run_time_pct  = (run_time.secs.to_f)  / total_moving_time
-      @walk_time_pct =  1.0 - run_time_pct
+      @moving_secs     = (rt.secs + wt.secs).to_f
+      @moving_run_pct  = rt.secs.to_f / moving_secs.to_f
+      @moving_walk_pct = 1.0 - moving_run_pct
 
-      # calculate seconds per mile (spm)
-      # @run_spm   = run_speed.seconds_per_mile.to_f * run_time_pct
-      # @walk_spm  = walk_speed.seconds_per_mile.to_f * walk_time_pct
-      # @total_spm = run_spm + walk_spm
+      @run_secs    = moving_run_pct  * rp.secs
+      @walk_secs   = moving_walk_pct * wp.secs
+      @avg_rw_secs = (run_secs + walk_secs).to_f
 
-      # @tpm   = ElapsedTime.new(@spm)
-      # @speed = Speed.new(Distance.new(1.0), @tpm)
-      # hash = @speed.projected_times('26.2')
+      mile  = M26::Distance.new(1.0)
+      mtime = M26::ElapsedTime.new(avg_rw_secs)
+      ttime = M26::ElapsedTime.new(avg_rw_secs * (1.0 + stopped_time_pct))
+      @moving_speed  = M26::Speed.new(mile, mtime)
+      @overall_speed = M26::Speed.new(mile, ttime)
 
-      # if true
-      #   puts "run:  #{@speed1.pace_per_mile} pace,  #{@speed1.get_mph} mph,  #{t1.as_hhmmss},  #{@speed1_pct * 100.0}%"
-      #   puts "walk: #{@speed2.pace_per_mile} pace,  #{@speed2.get_mph} mph,  #{t2.as_hhmmss},  #{@speed2_pct * 100.0}%"
-      #   puts "avg:  #{@speed.pace_per_mile} pace,  #{@speed.get_mph} mph"
-      #   distances.each { | d |
-      #     time = @speed.projected_time(Distance.new(d.to_f))
-      #     puts "projected time for #{d} miles = #{time}"
-      #   }
-      # end
+      if debug
+        puts "run_pace:         #{run_pace.inspect}"
+        puts "run_time:         #{run_time.inspect}"
+        puts "walk_pace:        #{walk_pace.inspect}"
+        puts "walk_time:        #{walk_time.inspect}"
+        puts "stopped_time_pct: #{stopped_time_pct.inspect}"
+        puts "moving_time_pct:  #{moving_time_pct.inspect}"
+        puts "moving_secs:      #{moving_secs.inspect}"
+        puts "moving_run_pct:   #{moving_run_pct.inspect}"
+        puts "moving_walk_pct:  #{moving_walk_pct.inspect}"
+        puts "run_secs:         #{run_secs.inspect}"
+        puts "walk_secs:        #{walk_secs.inspect}"
+        puts "avg_rw_secs:      #{avg_rw_secs.inspect}"
+        puts "moving_speed:     #{moving_speed}"
+        puts "overall_speed:    #{overall_speed}"
+      end
     end
 
     def average_pace_per_mile
