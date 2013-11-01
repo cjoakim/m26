@@ -1,6 +1,6 @@
 == M26
 
-version 0.3.0, released 2013-10-13
+version 0.4.0, released 2013-10-31
 
 A ruby gem for running, cycling, and swimming calculations -
 pace, mph, projected times, UOM conversions, etc.
@@ -68,41 +68,15 @@ The name refers to mile 26, the approximate length of a marathon.
     ag = M26::AgeGrade.new(56, 41)
     ag.predict(et) -> '03:47:30'
 
-== Exploring minitest, October 2013
-
-- links
-  - see http://www.rubyinside.com/a-minitestspec-tutorial-elegant-spec-style-testing-that-comes-with-ruby-5354.html
-  - see https://github.com/seattlerb/minitest
-  - see http://bfts.rubyforge.org/minitest/
-
-- executing the initial tests with minitest:
-  - rake test                # Run tests
-  - rake test:clean          # Executes the 'test' task after deleting the previous coverage result files
-
-- implementation notes
-  - successfully got minitest to work with simplecov!
-  - added 'minitest' to the Gemfile
-  - added file 'test/minitest_helper.rb', and required it in 'test/age_test.rb'
-  - added these two tasks to rakefile.rb
-
-      Rake::TestTask.new do | t |
-        t.libs.push "lib"
-        t.test_files = FileList['test/*_test.rb']
-        t.verbose = true
-      end
-
-      namespace :test do
-        desc "Executes the 'test' task after deleting the previous coverage result files."
-        task :clean do
-          FileUtils.rm_r 'coverage', :force => true
-          Rake::Task["test"].execute
-        end
-      end
-
-  - the 'rake test' and 'rake test:clean' tasks launch the tests in another process,
-    which is where SimpleCov is loaded and used (not in the rakefile main process).
-  - Added some process id logging; this can be removed.
-
+  # Ultramarathon calculations - run and walk and rest/stopped segments
+    rp  = M26::ElapsedTime.new('00:08:00') # running pace-per-mile
+    rt  = M26::ElapsedTime.new('00:04:00') # running segment time
+    wp  = M26::ElapsedTime.new('00:16:00') # walking pace-per-mile
+    wt  = M26::ElapsedTime.new('00:04:00') # walking segment time
+    sth = M26::ElapsedTime.new('00:03:00') # rest/stopped time per hour
+    u   = M26::Ultra.new(rp, rt, wp, wt, sth)
+    u.moving_speed   # A M26::Speed object is returned reflecting the run & walk
+    u.overall_speed  # A M26::Speed object is returned reflecting the run & walk & rest
 
 == Copyright and License
 

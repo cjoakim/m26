@@ -12,6 +12,7 @@ module M26
     attr_accessor :walk_pace, :walk_time
     attr_accessor :stopped_time_per_hour, :stopped_time_pct, :moving_time_pct
     attr_accessor :moving_secs, :moving_run_pct, :moving_walk_pct
+    attr_accessor :stop_factor, :moving_time, :total_time
     attr_accessor :run_secs, :walk_secs, :avg_rw_secs
     attr_accessor :moving_speed, :overall_speed
 
@@ -37,11 +38,11 @@ module M26
       @walk_secs   = moving_walk_pct * wp.secs
       @avg_rw_secs = (run_secs + walk_secs).to_f
 
-      mile  = M26::Distance.new(1.0)
-      mtime = M26::ElapsedTime.new(avg_rw_secs)
-      ttime = M26::ElapsedTime.new(avg_rw_secs * (1.0 + stopped_time_pct))
-      @moving_speed  = M26::Speed.new(mile, mtime)
-      @overall_speed = M26::Speed.new(mile, ttime)
+      @stop_factor   = 1.0 - stopped_time_pct
+      @moving_time   = M26::ElapsedTime.new(avg_rw_secs)
+      @total_time    = M26::ElapsedTime.new(avg_rw_secs.to_f / stop_factor)
+      @moving_speed  = M26::Speed.new(mile, moving_time)
+      @overall_speed = M26::Speed.new(mile, total_time)
 
       if debug
         puts "run_pace:         #{run_pace.inspect}"
@@ -56,9 +57,16 @@ module M26
         puts "run_secs:         #{run_secs.inspect}"
         puts "walk_secs:        #{walk_secs.inspect}"
         puts "avg_rw_secs:      #{avg_rw_secs.inspect}"
+        puts "stop_factor:      #{stop_factor}"
+        puts "moving_time:      #{moving_time}"
+        puts "total_time:       #{total_time}"
         puts "moving_speed:     #{moving_speed}"
         puts "overall_speed:    #{overall_speed}"
       end
+    end
+
+    def mile
+      M26::Distance.new(1.0)
     end
 
     def average_pace_per_mile
