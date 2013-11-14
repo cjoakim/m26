@@ -33,12 +33,15 @@ task :push do
   `gem push #{filename}`
 end
 
-desc 'Calculate Pace-per-Mile, etc from a given distance and time'
-task :qif2delim do
-  d = command_line_arg('d', nil)
-  t = command_line_arg('t', nil)
-  u = command_line_arg('u', 'm')
-  # TODO
+desc 'pry exploration'
+task :pryx do
+  require 'pry'
+  d  = M26::Distance.new(26.20)
+  et = M26::ElapsedTime.new('4:10:00')
+  s  = M26::Speed.new(d, et)
+  puts "opening pry, 'exit-all' to continue"
+  binding.pry
+  puts "resuming..."
 end
 
 desc 'Display the Array of leap years'
