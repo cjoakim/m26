@@ -97,7 +97,7 @@
 
 <h2 id="label-M26"><a href="M26.html">M26</a><span><a href="#label-M26">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p>version 0.5.0, released 2014-10-17</p>
+<p>version 1.0.1, released 2014-10-17</p>
 
 <p>A ruby gem for running, cycling, and swimming calculations - pace, mph,
 projected times, UOM conversions, etc.</p>
@@ -138,7 +138,7 @@ projected times, UOM conversions, etc.</p>
   et = M26::ElapsedTime.new(3661.12345)
   et.as_hours -&gt; 1.0169787361111111
   et.as_hhmmss -&gt; 01:01:01.12           # defaults to two decimal positions for the seconds
-  et.as_hhmmss(5) -&gt; 01:01:01.12        # you can specify the number of decimal positions for the seconds
+  et.as_hhmmss(5) -&gt; 01:01:01.12345     # you can specify the number of decimal positions for the seconds
 
 # Speed objects - constructed from a Distance and ElapsedTime
   d  = M26::Distance.new(26.20)
@@ -196,8 +196,8 @@ wp  = M26::ElapsedTime.new(&#39;00:16:00&#39;)  # walking pace-per-mile
 wt  = M26::ElapsedTime.new(&#39;00:04:00&#39;)  # walking segment time
 sth = M26::ElapsedTime.new(&#39;00:03:00&#39;)  # rest/stopped time per hour
 u   = M26::Ultra.new(rp, rt, wp, wt, sth)
-u.moving_speed.get_mph  -&gt; 5.970149253731343   # A M26::Speed object is returned reflecting the run &amp; walk
-u.overall_speed.get_mph -&gt; 5.671641791044776   # A M26::Speed object is returned reflecting the run &amp; walk &amp; stops</pre>
+u.moving_speed.get_mph  -&gt; 5.970149253731343  # A M26::Speed object is returned reflecting the run &amp; walk
+u.overall_speed.get_mph -&gt; 5.671641791044776  # A M26::Speed object is returned reflecting the run &amp; walk &amp; stops</pre>
 
 <h2 id="label-Copyright+and+License">Copyright and License<span><a href="#label-Copyright+and+License">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 

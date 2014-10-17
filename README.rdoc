@@ -1,6 +1,6 @@
 == M26
 
-version 1.0.0, released 2014-10-17
+version 1.0.1, released 2014-10-17
 
 A ruby gem for running, cycling, and swimming calculations -
 pace, mph, projected times, UOM conversions, etc.
@@ -41,7 +41,7 @@ The name refers to mile 26, the approximate length of a marathon.
     et = M26::ElapsedTime.new(3661.12345)
     et.as_hours -> 1.0169787361111111
     et.as_hhmmss -> 01:01:01.12           # defaults to two decimal positions for the seconds
-    et.as_hhmmss(5) -> 01:01:01.12        # you can specify the number of decimal positions for the seconds
+    et.as_hhmmss(5) -> 01:01:01.12345     # you can specify the number of decimal positions for the seconds
 
   # Speed objects - constructed from a Distance and ElapsedTime
     d  = M26::Distance.new(26.20)
@@ -94,8 +94,8 @@ The name refers to mile 26, the approximate length of a marathon.
     wt  = M26::ElapsedTime.new('00:04:00')  # walking segment time
     sth = M26::ElapsedTime.new('00:03:00')  # rest/stopped time per hour
     u   = M26::Ultra.new(rp, rt, wp, wt, sth)
-    u.moving_speed.get_mph  -> 5.970149253731343   # A M26::Speed object is returned reflecting the run & walk
-    u.overall_speed.get_mph -> 5.671641791044776   # A M26::Speed object is returned reflecting the run & walk & stops
+    u.moving_speed.get_mph  -> 5.970149253731343  # A M26::Speed object is returned reflecting the run & walk
+    u.overall_speed.get_mph -> 5.671641791044776  # A M26::Speed object is returned reflecting the run & walk & stops
 
 == Copyright and License
 

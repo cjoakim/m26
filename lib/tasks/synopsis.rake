@@ -44,7 +44,7 @@ task :synopsis do
   puts "    et = M26::ElapsedTime.new(3661.12345)"
   puts "    et.as_hours -> #{et.as_hours}"
   puts "    et.as_hhmmss -> #{et.as_hhmmss}       # defaults to two decimal positions for the seconds"
-  puts "    et.as_hhmmss(5) -> #{et.as_hhmmss}    # you can specify the number of decimal positions for the seconds"
+  puts "    et.as_hhmmss(5) -> #{et.as_hhmmss(5)}    # you can specify the number of decimal positions for the seconds"
   puts ""
   puts "  # Speed objects - constructed from a Distance and ElapsedTime"
   d  = M26::Distance.new(26.20)
