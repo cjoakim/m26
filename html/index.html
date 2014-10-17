@@ -2,60 +2,71 @@
 
 <html>
 <head>
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta charset="UTF-8">
 
 <title>m26</title>
 
-<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
 </script>
 
-<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
-<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
 
 
-<body>
-<nav id="metadata">
-  <nav id="home-section" class="section">
-  <h3 class="section-header">
-    <a href="./index.html">Home</a>
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
     <a href="./table_of_contents.html#classes">Classes</a>
     <a href="./table_of_contents.html#methods">Methods</a>
-  </h3>
-</nav>
+  </div>
+</div>
 
 
-  <nav id="search-section" class="section project-section" class="initially-hidden">
+    <div id="search-section" role="search" class="project-section initially-hidden">
   <form action="#" method="get" accept-charset="utf-8">
-    <h3 class="section-header">
-      <input type="text" name="search" placeholder="Search" id="search-field"
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
-    </h3>
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
   </form>
+</div>
 
-  <ul id="search-results" class="initially-hidden"></ul>
-</nav>
-
+  </div>
 
   <div id="project-metadata">
-    <nav id="fileindex-section" class="section project-section">
-  <h3 class="section-header">Pages</h3>
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
 
-  <ul>
+  <ul class="link-list">
   
-    <li class="file"><a href="./README_rdoc.html">README</a>
+    <li><a href="./README_rdoc.html">README</a>
   
   </ul>
-</nav>
+</div>
 
-    <nav id="classindex-section" class="section project-section">
-  <h3 class="section-header">Class and Module Index</h3>
+    <div id="classindex-section" class="nav-section">
+  <h3>Class and Module Index</h3>
 
   <ul class="link-list">
   
@@ -67,25 +78,26 @@
   
     <li><a href="./M26/AgeGrade.html">M26::AgeGrade</a>
   
-    <li><a href="./M26/Constants.html">M26::Constants</a>
-  
     <li><a href="./M26/Distance.html">M26::Distance</a>
   
     <li><a href="./M26/ElapsedTime.html">M26::ElapsedTime</a>
   
     <li><a href="./M26/Speed.html">M26::Speed</a>
   
+    <li><a href="./M26/Ultra.html">M26::Ultra</a>
+  
   </ul>
-</nav>
+</div>
 
   </div>
 </nav>
 
-<div id="documentation" class="description">
+<main role="main">
+
 
 <h2 id="label-M26"><a href="M26.html">M26</a><span><a href="#label-M26">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p>version 0.3.0, released 2013-10-13</p>
+<p>version 0.5.0, released 2014-10-17</p>
 
 <p>A ruby gem for running, cycling, and swimming calculations - pace, mph,
 projected times, UOM conversions, etc.</p>
@@ -109,7 +121,7 @@ projected times, UOM conversions, etc.</p>
 
 # Elapsed Times
   et = M26::ElapsedTime.new(&#39;3:58:33&#39;)  # works for average marathoners
-  et.as_hours -&gt; 3.9758                 # translates to a Float
+  et.as_hours -&gt; 3.9758333333333336     # translates to a Float
 
   et = M26::ElapsedTime.new(&#39;0:9.58&#39;)   # works for Usain Bolt, too
   et.as_hhmmss -&gt; &quot;00:00:09.58&quot;         # reformats to a normalized String value
@@ -151,40 +163,32 @@ projected times, UOM conversions, etc.</p>
 # Age-grading a time to another age
   et = M26::ElapsedTime.new(&#39;04:08:19&#39;)
   ag = M26::AgeGrade.new(56, 41)
-  ag.predict(et) -&gt; &#39;03:47:30&#39;</pre>
+  ag.predict(et) -&gt; &#39;03:47:30&#39;
 
-<h2 id="label-TODO">TODO<span><a href="#label-TODO">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
-<ul><li>
-<p>explore minitest</p>
-<ul><li>
-<p>see <a
-href="http://www.rubyinside.com/a-minitestspec-tutorial-elegant-spec-style-testing-that-comes-with-ruby-5354.html">www.rubyinside.com/a-minitestspec-tutorial-elegant-spec-style-testing-that-comes-with-ruby-5354.html</a></p>
-</li><li>
-<p>see <a
-href="https://github.com/seattlerb/minitest">github.com/seattlerb/minitest</a></p>
-</li><li>
-<p>see <a
-href="http://bfts.rubyforge.org/minitest">bfts.rubyforge.org/minitest</a>/</p>
-</li><li>
-<p>run minitest-based tests with: “rake test”</p>
-</li><li>
-<p>explore code-coverage with minitest</p>
-</li></ul>
-</li></ul>
+# Ultramarathon calculations - run and walk and rest/stopped segments
+  rp  = M26::ElapsedTime.new(&#39;00:08:00&#39;) # running pace-per-mile
+  rt  = M26::ElapsedTime.new(&#39;00:04:00&#39;) # running segment time
+  wp  = M26::ElapsedTime.new(&#39;00:16:00&#39;) # walking pace-per-mile
+  wt  = M26::ElapsedTime.new(&#39;00:04:00&#39;) # walking segment time
+  sth = M26::ElapsedTime.new(&#39;00:03:00&#39;) # rest/stopped time per hour
+  u   = M26::Ultra.new(rp, rt, wp, wt, sth)
+  u.moving_speed   # A M26::Speed object is returned reflecting the run &amp; walk
+  u.overall_speed  # A M26::Speed object is returned reflecting the run &amp; walk &amp; rest</pre>
 
 <h2 id="label-Copyright+and+License">Copyright and License<span><a href="#label-Copyright+and+License">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p>Copyright 2013, Chris Joakim, JoakimSoftware LLC,
-&lt;cjoakim@bellsouth.net&gt;.</p>
+<p>Copyright 2014, Chris Joakim, JoakimSoftware LLC,
+&lt;christopher.joakim@gmail.com&gt;.</p>
 
 <p>GNU General Public License (GPLv3) license. See <a
 href="http://www.gnu.org/copyleft/gpl.html">www.gnu.org/copyleft/gpl.html</a></p>
-</div>
+</main>
 
 
-<footer id="validator-badges">
-  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
-  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

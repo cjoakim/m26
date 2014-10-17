@@ -1,6 +1,6 @@
 =begin
 
-Copyright (C) 2013 Chris Joakim, JoakimSoftware LLC
+Copyright (C) 2014 Chris Joakim, JoakimSoftware LLC
 
 =end
 

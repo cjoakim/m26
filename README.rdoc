@@ -24,7 +24,7 @@ The name refers to mile 26, the approximate length of a marathon.
 
   # Elapsed Times
     et = M26::ElapsedTime.new('3:58:33')  # works for average marathoners
-    et.as_hours -> 3.9758                 # translates to a Float
+    et.as_hours -> 3.9758333333333336     # translates to a Float
 
     et = M26::ElapsedTime.new('0:9.58')   # works for Usain Bolt, too
     et.as_hhmmss -> "00:00:09.58"         # reformats to a normalized String value
