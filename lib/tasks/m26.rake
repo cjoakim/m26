@@ -33,17 +33,6 @@ task :push do
   `gem push #{filename}`
 end
 
-desc 'pry exploration'
-task :pryx do
-  require 'pry'
-  d  = M26::Distance.new(26.20)
-  et = M26::ElapsedTime.new('4:10:00')
-  s  = M26::Speed.new(d, et)
-  puts "opening pry, 'exit-all' to continue"
-  binding.pry
-  puts "resuming..."
-end
-
 desc 'Display the Array of leap years'
 task :display_leap_years do
   puts M26::Age.new('1958-10-07', '2013-08-29').leap_years.inspect
