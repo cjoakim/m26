@@ -1,6 +1,6 @@
 =begin
 
-Copyright (C) 2013 Chris Joakim, JoakimSoftware LLC
+Copyright (C) 2014 Chris Joakim, JoakimSoftware LLC
 
 =end
 
@@ -13,11 +13,11 @@ describe "Test class M26::ElapsedTime" do
     $string_test_cases  = Hash.new
 
     cases = Array.new
-    cases << "0|00:00:00"
-    cases << "7|00:00:07"
-    cases << "59|00:00:59"
-    cases << "60|00:01:00"
-    cases << "13650|03:47:30"
+    cases << "0|00:00:00.00"
+    cases << "7|00:00:07.00"
+    cases << "59|00:00:59.00"
+    cases << "60|00:01:00.00"
+    cases << "13650|03:47:30.00"
 
     cases.each { | tc |
       tokens = tc.split('|')
@@ -54,6 +54,12 @@ describe "Test class M26::ElapsedTime" do
     }
   end
 
+  it "should construct with a fractional Float" do
+    @et = M26::ElapsedTime.new(28872.345)
+    @et.as_hhmmss.should    == '08:01:12.35'
+    @et.as_hhmmss(3).should == '08:01:12.345'
+  end
+
   it "should construct with a 'HH:MM:SS' String" do
     $string_test_cases.keys.sort.each { | hhmmss_str |
       expected = $string_test_cases[hhmmss_str].to_i
@@ -84,10 +90,10 @@ describe "Test class M26::ElapsedTime" do
 
   it "should construct and round with a 'SS.FF' String" do
     @et = M26::ElapsedTime.new('91.08')
-    @et.secs.should == 91
+    @et.secs.should == 91.08
 
     @et = M26::ElapsedTime.new('91.78')
-    @et.secs.should == 92
+    @et.secs.should == 91.78
   end
 
   it "should work for Usain Bolt" do
@@ -104,12 +110,12 @@ describe "Test class M26::ElapsedTime" do
   end
 
   it "should implement 'to_s'" do
-    expected = 'ElapsedTime: hh=3 mm=58 ss=33.0 secs=14313.0 as_hours=3.9758333333333336 as_hhmmss=03:58:33.0'
+    expected = 'ElapsedTime: hh=3 mm=58 ss=33.0 secs=14313.0 as_hours=3.9758333333333336 as_hhmmss=03:58:33.00'
     M26::ElapsedTime.new('3:58:33').to_s.should == expected
   end
 
   it "should implement 'print_string'" do
-    expected = 'ElapsedTime: hh=3 mm=45 ss=0.0 secs=13500.0 as_hours=3.75 as_hhmmss=03:45:00.0 13500.0 3.75'
+    expected = 'ElapsedTime: hh=3 mm=45 ss=0.0 secs=13500.0 as_hours=3.75 as_hhmmss=03:45:00.00 13500.0 3.75'
     M26::ElapsedTime.new('3:45:00').print_string.should == expected
   end
 
@@ -120,9 +126,9 @@ describe "Test class M26::ElapsedTime" do
 
     @diff1 = @et1.subtract(@et2)
     @diff1.instance_of?(M26::ElapsedTime).should == true
-    @diff1.as_hhmmss.should == '00:00:46'
+    @diff1.as_hhmmss.should == '00:00:46.00'
 
     @diff2 = @et1.subtract(@et3)
-    @diff2.as_hhmmss.should == '00:48:16'
+    @diff2.as_hhmmss.should == '00:48:16.00'
   end
 end

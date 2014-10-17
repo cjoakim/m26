@@ -1,6 +1,6 @@
 =begin
 
-Copyright (C) 2013 Chris Joakim, JoakimSoftware LLC
+Copyright (C) 2014 Chris Joakim, JoakimSoftware LLC
 
 =end
 
@@ -27,8 +27,8 @@ module M26
       @secs / SECONDS_PER_HOUR.to_f
     end
 
-    def as_hhmmss
-      return "#{zero_pad(@hh)}:#{zero_pad(@mm)}:#{zero_pad(@ss)}"
+    def as_hhmmss(ss_fractional_digits=2)
+      return "#{zero_pad(hh)}:#{zero_pad(mm)}:#{zero_pad(ss, ss_fractional_digits)}"
     end
 
     def subtract(another_instance)
@@ -39,11 +39,11 @@ module M26
     end
 
     def to_s
-      return "ElapsedTime: hh=#{@hh} mm=#{@mm} ss=#{@ss} secs=#{@secs} as_hours=#{as_hours()} as_hhmmss=#{as_hhmmss()}"
+      return "ElapsedTime: hh=#{hh} mm=#{mm} ss=#{ss} secs=#{secs} as_hours=#{as_hours()} as_hhmmss=#{as_hhmmss}"
     end
 
     def print_string
-      return to_s << " #{@secs} #{as_hours}"
+      return to_s << " #{secs} #{as_hours}"
     end
 
     private
@@ -54,36 +54,38 @@ module M26
         @hh = array[0].to_i
         @mm = array[1].to_i
         @ss = array[2].to_f
-        @ss = 59 if @ss > 59
+        @ss = 59.999 if @ss > 59
       end
 
       if (array.length == 2)
         @mm = array[0].to_i
         @ss = array[1].to_f
-        @ss = 59 if @ss > 59
+        @ss = 59.000 if @ss > 59
       end
 
       if (array.length == 1)
-        @ss = array[0].to_f.round
+        @ss = array[0].to_f
       end
 
-      @secs = (@hh.to_i * SECONDS_PER_HOUR) + (@mm.to_i * 60) + (@ss.to_f);
+      @secs = (hh.to_i * SECONDS_PER_HOUR) + (mm.to_i * 60) + ss;
     end
 
     def initialize_number(raw_val)
-      @secs = raw_val.to_i
+      @secs = raw_val
       @hh = (@secs / SECONDS_PER_HOUR).to_i
       rem = @secs - (@hh * SECONDS_PER_HOUR)
       @mm = (rem / 60).to_i
-      @ss = rem - (@mm * 60).to_i
-      @ss = 59 if @ss > 59
+      @ss = rem - (@mm * 60) # .to_i
+      @ss = 59.999 if @ss > 59
     end
 
-    def zero_pad(val)
-      if (val.to_i < 10)
-        return '0' + val.to_s
+    def zero_pad(val, fractional_digits=0)
+      fmt = "%2.#{fractional_digits}f"
+      vvv = sprintf(fmt, val).tr(' ','')
+      if (val < 10)
+        return '0' + vvv # val.to_s
       else
-        return '' + val.to_s
+        return '' + vvv # val.to_s
       end
     end
 

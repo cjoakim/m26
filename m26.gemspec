@@ -12,7 +12,7 @@ Gem::Specification.new do | s |
   s.email       = M26::Constants::EMAIL
   s.homepage    = 'https://github.com/cjoakim/m26'
   s.platform    = Gem::Platform::RUBY
-  s.required_ruby_version = '>= 2.0.0'
+  s.required_ruby_version = '>= 2.1.1'
   s.has_rdoc    = true
   s.files = FileList[
     'lib/**/*.rb'].to_a

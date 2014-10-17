@@ -1,6 +1,6 @@
 =begin
 
-Copyright (C) 2013 Chris Joakim, JoakimSoftware LLC
+Copyright (C) 2014 Chris Joakim, JoakimSoftware LLC
 
 =end
 
@@ -49,7 +49,7 @@ describe "Test class M26::Speed" do
 
   it "should implement 'to_s'" do
     @s = M26::Speed.from_pace_per_mile('07:54')
-    expected = 'Speed: miles=1.0 seconds=474 mph=7.59493670886076 kph=12.249897917544304 yph=13367.088607594938'
+    expected = 'Speed: miles=1.0 seconds=474.0 mph=7.59493670886076 kph=12.249897917544304 yph=13367.088607594938'
     @s.to_s.should == expected
   end
 
@@ -58,9 +58,9 @@ describe "Test class M26::Speed" do
     results = @s.projected_times('2.0 26.2')
     results.size.should == 2
     results.class.name.should == 'Hash'
-    results['2.0'].should == '00:15:48'
+    results['2.0'].should == '00:15:48.00'
     results['10.0'].should be_nil
-    results['26.2'].should == '03:26:58'
+    results['26.2'].should == '03:26:58.80'
   end
 
   it "should project a time with simple extrapolation/interpolation" do
@@ -68,7 +68,7 @@ describe "Test class M26::Speed" do
     @d2 = M26::Distance.new(20.0)
     @t  = M26::ElapsedTime.new('03:47:30')
     @s  = M26::Speed.new(@d1, @t)
-    @s.projected_time(@d2).should == '02:53:39'
+    @s.projected_time(@d2).should == '02:53:39.85'
   end
 
   it "should project a time with pete riegel exponential formula" do
@@ -76,7 +76,7 @@ describe "Test class M26::Speed" do
     @d2 = M26::Distance.new(20.0)
     @t  = M26::ElapsedTime.new('03:47:30')
     @s  = M26::Speed.new(@d1, @t)
-    @s.projected_time(@d2, 'riegel').should == '02:50:52'
+    @s.projected_time(@d2, 'riegel').should == '02:50:52.39'
   end
 
   it "should calculate an 'age_graded' speed" do
@@ -87,9 +87,9 @@ describe "Test class M26::Speed" do
     @s2 = @s.age_graded('1958-10-07', '2011-08-26','2000-05-28')
 
     @s.pace_per_mile.should == '8:40.99'
-    @s.elapsed_time.as_hhmmss.should == '03:47:30.0'
-    @s2.pace_per_mile.should == '9:16.03'
-    @s2.elapsed_time.as_hhmmss.should == '04:02:48'
+    @s.elapsed_time.as_hhmmss.should == '03:47:30.00'
+    @s2.pace_per_mile.should == '9:16.05'
+    @s2.elapsed_time.as_hhmmss.should == '04:02:48.54'
   end
 
   it "should implement 'calculate_average_speed' with even walk/run durations" do

@@ -1,6 +1,6 @@
 =begin
 
-Copyright (C) 2013 Chris Joakim, JoakimSoftware LLC
+Copyright (C) 2014 Chris Joakim, JoakimSoftware LLC
 
 =end
 
@@ -8,10 +8,10 @@ module M26
 
   module Constants
 
-    VERSION             = '0.4.0'
-    DATE                = '2013-11-01'
+    VERSION             = '1.0.0'
+    DATE                = '2014-10-17'
     AUTHOR              = 'Chris Joakim'
-    EMAIL               = 'cjoakim@bellsouth.net'
+    EMAIL               = 'christopher.joakim@gmail.com'
 
     UOM_MILES           = 'm'
     UOM_KILOMETERS      = 'k'
