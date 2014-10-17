@@ -22,33 +22,33 @@ describe "Test class M26::AgeGrade" do
     ag.maxpulse(300).should == 1
   end
 
-  it "should predict to a younger age" do
+  it "should calculate to a younger age" do
     et = M26::ElapsedTime.new('04:08:19')
     ag = M26::AgeGrade.new(56, 41)
-    hhmmss = ag.predict(et)
+    hhmmss = ag.calculate(et)
     hhmmss.should == '03:47:30.48'
   end
 
-  it "should predict to an older age" do
+  it "should calculate to an older age" do
     et = M26::ElapsedTime.new('03:47:30')
     ag = M26::AgeGrade.new(41, 56)
-    hhmmss = ag.predict(et)
+    hhmmss = ag.calculate(et)
     hhmmss.should == '04:08:18.48'
   end
 
-  it "should predict to the same age" do
+  it "should calculate to the same age" do
     et = M26::ElapsedTime.new('03:47:30')
     ag = M26::AgeGrade.new(41, 41)
-    hhmmss = ag.predict(et)
+    hhmmss = ag.calculate(et)
     hhmmss.should == '03:47:30.00'
   end
 
-  it "should predict equivalent values from ages under 25" do
+  it "should calculate equivalent values from ages under 25" do
     et  = M26::ElapsedTime.new('03:30:00')
     ag1 = M26::AgeGrade.new(19, 55)
     ag2 = M26::AgeGrade.new(24, 55)
-    hhmmss1 = ag1.predict(et)
-    hhmmss2 = ag2.predict(et)
+    hhmmss1 = ag1.calculate(et)
+    hhmmss2 = ag2.calculate(et)
     hhmmss1.should == hhmmss2
     hhmmss2.should == '04:09:27.27'
   end

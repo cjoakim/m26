@@ -75,15 +75,15 @@
     
     <li ><a href="#method-c-new">::new</a>
     
+    <li ><a href="#method-i-calculate">#calculate</a>
+    
+    <li ><a href="#method-i-calculate_maxpulse">#calculate_maxpulse</a>
+    
     <li ><a href="#method-i-maxpulse">#maxpulse</a>
     
     <li ><a href="#method-i-maxpulse1">#maxpulse1</a>
     
     <li ><a href="#method-i-maxpulse2">#maxpulse2</a>
-    
-    <li ><a href="#method-i-predict">#predict</a>
-    
-    <li ><a href="#method-i-predict_maxpulse">#predict_maxpulse</a>
     
   </ul>
 </div>
@@ -194,6 +194,80 @@
        </header>
 
     
+      <div id="method-i-calculate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">calculate</span><span
+            class="method-args">(elapsed_time, formula='maxpulse')</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="calculate-source">
+            <pre><span class="ruby-comment"># File lib/m26_age_grade.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">calculate</span>(<span class="ruby-identifier">elapsed_time</span>, <span class="ruby-identifier">formula</span>=<span class="ruby-string">&#39;maxpulse&#39;</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">formula</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;maxpulse&#39;</span>
+    <span class="ruby-identifier">calculate_maxpulse</span>(<span class="ruby-identifier">elapsed_time</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-calculate_maxpulse" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">calculate_maxpulse</span><span
+            class="method-args">(elapsed_time)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="calculate_maxpulse-source">
+            <pre><span class="ruby-comment"># File lib/m26_age_grade.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">calculate_maxpulse</span>(<span class="ruby-identifier">elapsed_time</span>)
+  <span class="ruby-identifier">p1</span>, <span class="ruby-identifier">p2</span> = <span class="ruby-identifier">maxpulse1</span>.<span class="ruby-identifier">to_f</span>, <span class="ruby-identifier">maxpulse2</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">ratio</span>  = <span class="ruby-identifier">p1</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">p2</span>
+  <span class="ruby-identifier">psecs</span>  = <span class="ruby-identifier">ratio</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">elapsed_time</span>.<span class="ruby-identifier">secs</span>.<span class="ruby-identifier">to_f</span>
+  <span class="ruby-identifier">ptime</span>  = <span class="ruby-constant">M26</span><span class="ruby-operator">::</span><span class="ruby-constant">ElapsedTime</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">psecs</span>)
+  <span class="ruby-identifier">ptime</span>.<span class="ruby-identifier">as_hhmmss</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-maxpulse" class="method-detail ">
         
         <div class="method-heading">
@@ -215,9 +289,9 @@
           <div class="method-source-code" id="maxpulse-source">
             <pre><span class="ruby-comment"># File lib/m26_age_grade.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">maxpulse</span>(<span class="ruby-identifier">age</span>)
-  <span class="ruby-identifier">p</span> = <span class="ruby-value">220</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">age</span>
-  <span class="ruby-identifier">p</span> = <span class="ruby-value">196</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">p</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">196</span>  <span class="ruby-comment"># age 24 is &quot;peak&quot; (220-24=196)</span>
-  <span class="ruby-identifier">p</span> = <span class="ruby-value">1</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">p</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+  <span class="ruby-identifier">p</span> = <span class="ruby-value">220.0</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">age</span>
+  <span class="ruby-identifier">p</span> = <span class="ruby-value">196.0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">p</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">196.0</span>  <span class="ruby-comment"># age 24 is &quot;peak&quot; (220-24=196)</span>
+  <span class="ruby-identifier">p</span> = <span class="ruby-value">1.0</span>   <span class="ruby-keyword">if</span> <span class="ruby-identifier">p</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
   <span class="ruby-identifier">p</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -285,80 +359,6 @@
             <pre><span class="ruby-comment"># File lib/m26_age_grade.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">maxpulse2</span>
   <span class="ruby-identifier">maxpulse</span>(<span class="ruby-identifier">age2</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-predict" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">predict</span><span
-            class="method-args">(elapsed_time, formula='maxpulse')</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="predict-source">
-            <pre><span class="ruby-comment"># File lib/m26_age_grade.rb, line 19</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">predict</span>(<span class="ruby-identifier">elapsed_time</span>, <span class="ruby-identifier">formula</span>=<span class="ruby-string">&#39;maxpulse&#39;</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">formula</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;maxpulse&#39;</span>
-    <span class="ruby-identifier">predict_maxpulse</span>(<span class="ruby-identifier">elapsed_time</span>)
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">nil</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-predict_maxpulse" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">predict_maxpulse</span><span
-            class="method-args">(elapsed_time)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="predict_maxpulse-source">
-            <pre><span class="ruby-comment"># File lib/m26_age_grade.rb, line 27</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">predict_maxpulse</span>(<span class="ruby-identifier">elapsed_time</span>)
-  <span class="ruby-identifier">p1</span>, <span class="ruby-identifier">p2</span> = <span class="ruby-identifier">maxpulse1</span>.<span class="ruby-identifier">to_f</span>, <span class="ruby-identifier">maxpulse2</span>.<span class="ruby-identifier">to_f</span>
-  <span class="ruby-identifier">ratio</span>  = <span class="ruby-identifier">p1</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">p2</span>
-  <span class="ruby-identifier">psecs</span>  = <span class="ruby-identifier">ratio</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">elapsed_time</span>.<span class="ruby-identifier">secs</span>.<span class="ruby-identifier">to_f</span>
-  <span class="ruby-identifier">ptime</span>  = <span class="ruby-constant">M26</span><span class="ruby-operator">::</span><span class="ruby-constant">ElapsedTime</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">psecs</span>)
-  <span class="ruby-identifier">ptime</span>.<span class="ruby-identifier">as_hhmmss</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

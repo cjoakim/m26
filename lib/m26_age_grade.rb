@@ -16,15 +16,15 @@ module M26
 
     public
 
-    def predict(elapsed_time, formula='maxpulse')
+    def calculate(elapsed_time, formula='maxpulse')
       if formula.to_s == 'maxpulse'
-        predict_maxpulse(elapsed_time)
+        calculate_maxpulse(elapsed_time)
       else
         nil
       end
     end
 
-    def predict_maxpulse(elapsed_time)
+    def calculate_maxpulse(elapsed_time)
       p1, p2 = maxpulse1.to_f, maxpulse2.to_f
       ratio  = p1 / p2
       psecs  = ratio * elapsed_time.secs.to_f
@@ -41,9 +41,9 @@ module M26
     end
 
     def maxpulse(age)
-      p = 220 - age
-      p = 196 if p > 196  # age 24 is "peak" (220-24=196)
-      p = 1   if p < 1
+      p = 220.0 - age
+      p = 196.0 if p > 196.0  # age 24 is "peak" (220-24=196)
+      p = 1.0   if p < 1
       p
     end
   end

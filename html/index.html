@@ -113,67 +113,91 @@ projected times, UOM conversions, etc.</p>
 <pre># Units of Measure for Distances
   miles = &#39;m&#39;, kilometers = &#39;k&#39;, yards = &#39;y&#39;
 
-# Distances
+# Distance objects
   d = M26::Distance.new(6.20)  # same as the following; defaults to miles
   d = M26::Distance.new(6.20, &#39;m&#39;)
   d = M26::Distance.new(10.0, &#39;k&#39;)
   d = M26::Distance.new(1800, &#39;y&#39;)
+  d.get_miles      -&gt; 1.0227272727272727
+  d.get_kilometers -&gt; 1.6495601173020529
+  d.get_yards      -&gt; 1800.0
 
-# Elapsed Times
+# ElapsedTime objects - can be constructed from a &#39;hh:mm:ss&#39; String value
   et = M26::ElapsedTime.new(&#39;3:58:33&#39;)  # works for average marathoners
   et.as_hours -&gt; 3.9758333333333336     # translates to a Float
+  et.as_hhmmss -&gt; 03:58:33.00           # defaults to two decimal positions for the seconds
+
+  et = M26::ElapsedTime.new(&#39;3:58:33.789&#39;)
+  et.as_hours -&gt; 3.9760525
+  et.as_hhmmss -&gt; 03:58:33.79
 
   et = M26::ElapsedTime.new(&#39;0:9.58&#39;)   # works for Usain Bolt, too
-  et.as_hhmmss -&gt; &quot;00:00:09.58&quot;         # reformats to a normalized String value
+  et.as_hours  -&gt; 0.002661111111111111
 
-# Speed
+# ElapsedTime objects - alternatively constructed from a number of total seconds
+  et = M26::ElapsedTime.new(3661.12345)
+  et.as_hours -&gt; 1.0169787361111111
+  et.as_hhmmss -&gt; 01:01:01.12           # defaults to two decimal positions for the seconds
+  et.as_hhmmss(5) -&gt; 01:01:01.12        # you can specify the number of decimal positions for the seconds
+
+# Speed objects - constructed from a Distance and ElapsedTime
   d  = M26::Distance.new(26.20)
   et = M26::ElapsedTime.new(&#39;3:58:33&#39;)
   s  = M26::Speed.new(d, et)
-  s.get_mph -&gt; 6.5898                   # miles per hour
-  s.get_kph -&gt; 10.6287                  # kilometers per hour
-  s.get_yph -&gt; 11598.071                # yards per hour
-  s.pace_per_mile -&gt; &#39;9:06.29&#39;
+  s.get_mph -&gt; 6.58981345629847         # miles per hour
+  s.get_kph -&gt; 10.628731381149947       # kilometers per hour
+  s.get_yph -&gt; 11598.071683085307       # yards per hour
+  s.pace_per_mile -&gt; 9:06.29            # pace per mile
 
-  s = M26::Speed.from_pace_per_mile(&#39;06:00&#39;) # alternatively create from a pace per mile
+# Speed objects - alternatively constructed from a pace-per-mile &#39;mm:ss&#39; String value
+  s = M26::Speed.from_pace_per_mile(&#39;06:00&#39;)
+  s.get_mph -&gt; 10.0
+  s.get_kph -&gt; 16.1290322581
+  s.get_yph -&gt; 17600.0
+  s.pace_per_mile -&gt; 6:00.0</pre>
 
-# Projecting a Speed, with simple extrapolation/interpolation
-  d1 = M26::Distance.new(26.2)
-  d2 = M26::Distance.new(20.0)
-  t  = M26::ElapsedTime.new(&#39;03:47:30&#39;)
-  s  = M26::Speed.new(d1, t)
-  s.projected_time(d2) -&gt; &#39;02:53:39&#39;
+<p># Projecting a Speed, with simple extrapolation/interpolation</p>
 
-# Projecting a Speed, with pete riegel exponential formula
-  d1 = M26::Distance.new(26.2)
-  d2 = M26::Distance.new(20.0)
-  t  = M26::ElapsedTime.new(&#39;03:47:30&#39;)
-  s  = M26::Speed.new(d1, t)
-  s.projected_time(d2, &#39;riegel&#39;) -&gt; &#39;02:50:52&#39;
+<pre>d1 = M26::Distance.new(26.2)
+d2 = M26::Distance.new(20.0)
+t  = M26::ElapsedTime.new(&#39;03:47:30&#39;)
+s  = M26::Speed.new(d1, t)
+s.projected_time(d2) -&gt; 02:53:39.85</pre>
 
-# Averaging two Speeds, such as for Run-Walk calculations
-  s1  = M26::Speed.from_pace_per_mile(&#39;06:00&#39;)
-  t1  = M26::ElapsedTime.new(&#39;00:04:00&#39;)
-  s2  = M26::Speed.from_pace_per_mile(&#39;18:00&#39;)
-  t2  = M26::ElapsedTime.new(&#39;00:04:00&#39;)
-  avg = M26::Speed.calculate_average_speed(s1, s2, t1, t2)
-  avg.get_mph -&gt; 5.0
-  avg.pace_per_mile -&gt; &#39;12:00.0&#39;
+<p># Projecting a Speed, with pete riegel exponential formula</p>
 
-# Age-grading a time to another age
-  et = M26::ElapsedTime.new(&#39;04:08:19&#39;)
-  ag = M26::AgeGrade.new(56, 41)
-  ag.predict(et) -&gt; &#39;03:47:30&#39;
+<pre>d1 = M26::Distance.new(26.2)
+d2 = M26::Distance.new(20.0)
+t  = M26::ElapsedTime.new(&#39;03:47:30&#39;)
+s  = M26::Speed.new(d1, t)
+s.projected_time(d2, &#39;riegel&#39;) -&gt; 02:50:52.39</pre>
 
-# Ultramarathon calculations - run and walk and rest/stopped segments
-  rp  = M26::ElapsedTime.new(&#39;00:08:00&#39;) # running pace-per-mile
-  rt  = M26::ElapsedTime.new(&#39;00:04:00&#39;) # running segment time
-  wp  = M26::ElapsedTime.new(&#39;00:16:00&#39;) # walking pace-per-mile
-  wt  = M26::ElapsedTime.new(&#39;00:04:00&#39;) # walking segment time
-  sth = M26::ElapsedTime.new(&#39;00:03:00&#39;) # rest/stopped time per hour
-  u   = M26::Ultra.new(rp, rt, wp, wt, sth)
-  u.moving_speed   # A M26::Speed object is returned reflecting the run &amp; walk
-  u.overall_speed  # A M26::Speed object is returned reflecting the run &amp; walk &amp; rest</pre>
+<p># Averaging two Speeds, such as for Run-Walk calculations</p>
+
+<pre>s1  = M26::Speed.from_pace_per_mile(&#39;06:00&#39;)
+t1  = M26::ElapsedTime.new(&#39;00:04:00&#39;)
+s2  = M26::Speed.from_pace_per_mile(&#39;18:00&#39;)
+t2  = M26::ElapsedTime.new(&#39;00:04:00&#39;)
+avg = M26::Speed.calculate_average_speed(s1, s2, t1, t2)
+avg.get_mph -&gt; 5.0
+avg.pace_per_mile -&gt; 12:00.0</pre>
+
+<p># Age-grading a time to another age</p>
+
+<pre>et = M26::ElapsedTime.new(&#39;04:08:55&#39;)
+ag = M26::AgeGrade.new(57.123, 41.789)
+ag.calculate(et) -&gt; 03:47:29.93</pre>
+
+<p># Ultramarathon calculations - run and walk and rest/stopped segments</p>
+
+<pre>rp  = M26::ElapsedTime.new(&#39;00:08:00&#39;)  # running pace-per-mile
+rt  = M26::ElapsedTime.new(&#39;00:04:00&#39;)  # running segment time
+wp  = M26::ElapsedTime.new(&#39;00:16:00&#39;)  # walking pace-per-mile
+wt  = M26::ElapsedTime.new(&#39;00:04:00&#39;)  # walking segment time
+sth = M26::ElapsedTime.new(&#39;00:03:00&#39;)  # rest/stopped time per hour
+u   = M26::Ultra.new(rp, rt, wp, wt, sth)
+u.moving_speed.get_mph  -&gt; 5.970149253731343   # A M26::Speed object is returned reflecting the run &amp; walk
+u.overall_speed.get_mph -&gt; 5.671641791044776   # A M26::Speed object is returned reflecting the run &amp; walk &amp; stops</pre>
 
 <h2 id="label-Copyright+and+License">Copyright and License<span><a href="#label-Copyright+and+License">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
